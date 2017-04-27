@@ -1,0 +1,29 @@
+---
+output: html_document
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library('plotly')
+categories <- c('Swag', 'Yolo', 'Dab', 'Nae Nae', 'Dougie')
+percent <- c(18, 24, 99, 40, 52)
+value <- c(100, 80, 50, 10, 5)
+data <- data.frame(categories, percent, value)
+
+chart <- plot_ly(data, x = ~percent, y = ~value, type = 'bar',
+        mode = 'text', text = ~categories, textposition = 'middle right',
+        textfont = list(color = '#000000', size = 16)) %>%
+        layout(title = 'Jon Cantles street levels',
+         xaxis = list(title = '% contained',
+                      zeroline = TRUE,
+                      range = c(0, 130)),
+         yaxis = list(title = 'Street value',
+                      range = c(0,120)))
+
+
+```
+
+# Interactive Chart
+
+This is an interactive chart made with Plotly (taken from the [documentation](https://plot.ly/r/text-and-annotations/)).
+
+`r chart`.
